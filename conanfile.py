@@ -22,7 +22,7 @@ class VSomeIPConan(ConanFile):
     default_options = {
         'shared': True,
         'fPIC': True,
-        'boost:shared': True,
+        'boost:shared': False,
         'boost:without_context': True,
         'boost:without_coroutine': True,
         'boost:without_mpi': True,
