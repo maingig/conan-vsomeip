@@ -84,6 +84,7 @@ class VSomeIPConan(ConanFile):
 
     def package(self):
         self.copy(pattern="LICENSE", dst="licenses", src=self.name)
+        self.copy(pattern="vsomeipd", dst="bin", src="daemon")
         cmake = self.configure_cmake()
         cmake.install()
 
