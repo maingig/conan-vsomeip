@@ -7,7 +7,7 @@ from conans import ConanFile, CMake, tools
 
 class VSomeIPConan(ConanFile):
     name = "vsomeip"
-    version = "3.1.15.1"
+    version = "3.1.16.1"
     license = "https://github.com/maingig/vsomeip/blob/master/LICENSE"
     author = "https://github.com/maingig/vsomeip/blob/master/AUTHORS"
     url = "https://github.com/maingig/vsomeip.git"
@@ -75,6 +75,7 @@ class VSomeIPConan(ConanFile):
             cmake.definitions["DIAGNOSIS_ADDRESS"] = self.env['DIAGNOSIS_ADDRESS']
         if 'UNICAST_ADDRESS' in self.env and len(self.env['UNICAST_ADDRESS']) > 0:
             cmake.definitions["UNICAST_ADDRESS"] = self.env['UNICAST_ADDRESS']
+        cmake.definitions["VSOMEIP_INSTALL_ROUTINGMANAGERD"] = True
         cmake.configure(source_folder=self.name, build_folder=self.name)
         return cmake
 
@@ -84,7 +85,6 @@ class VSomeIPConan(ConanFile):
 
     def package(self):
         self.copy(pattern="LICENSE", dst="licenses", src=self.name)
-        self.copy(pattern="vsomeipd", dst="bin", src="daemon")
         cmake = self.configure_cmake()
         cmake.install()
 
