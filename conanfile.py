@@ -75,6 +75,8 @@ class VSomeIPConan(ConanFile):
             cmake.definitions["DIAGNOSIS_ADDRESS"] = self.env['DIAGNOSIS_ADDRESS']
         if 'UNICAST_ADDRESS' in self.env and len(self.env['UNICAST_ADDRESS']) > 0:
             cmake.definitions["UNICAST_ADDRESS"] = self.env['UNICAST_ADDRESS']
+        if self.settings.os == "QNX":
+            cmake.definitions["ENABLE_MULTIPLE_ROUTING_MANAGERS"] = 1
         cmake.definitions["VSOMEIP_INSTALL_ROUTINGMANAGERD"] = True
         cmake.configure(source_folder=self.name, build_folder=self.name)
         return cmake
