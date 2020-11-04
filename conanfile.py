@@ -67,6 +67,8 @@ class VSomeIPConan(ConanFile):
         if 'fPIC' in self.options and self.options.fPIC:
             cmake.definitions["CMAKE_C_FLAGS"] = "-fPIC"
             cmake.definitions["CMAKE_CXX_FLAGS"] = "-fPIC"
+        if 'shared' in self.options:
+            cmake.definitions["BUILD_SHARED_LIBS"] = self.options.shared
         if 'BASE_PATH' in self.env and len(self.env['BASE_PATH']) > 0:
             cmake.definitions["BASE_PATH"] = self.env['BASE_PATH']
         if 'ENABLE_SIGNAL_HANDLING' in self.env and len(self.env['ENABLE_SIGNAL_HANDLING']) > 0:
