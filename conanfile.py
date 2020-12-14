@@ -47,7 +47,7 @@ class VSomeIPConan(ConanFile):
 
     def source(self):
         self.run("git clone %s %s" % (self.source_url, self.name))
-        self.run("cd %s && git checkout master" % (self.name))
+        self.run("cd %s && git checkout tags/%s" % (self.name, self.version))
         """Wrap the original CMake file to call conan_basic_setup
         """
         shutil.move("%s/CMakeLists.txt" % (self.name), "%s/CMakeListsOriginal.txt" % (self.name))
