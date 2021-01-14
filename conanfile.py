@@ -34,7 +34,7 @@ class VSomeIPConan(ConanFile):
     source_branch = "master"
 
     def requirements(self):
-        self.requires("boost/1.73.0@%s/%s" % (self.user, self.channel))
+        self.requires("boost/1.72.0@%s/%s" % (self.user, self.channel))
         if self.settings.os != "Android":
             self.requires("gtest/[>=1.8]@%s/%s" % (self.user, self.channel))
 
